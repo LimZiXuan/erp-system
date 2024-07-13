@@ -14,7 +14,7 @@ public class ErpSystemApplication {
 		SpringApplication.run(ErpSystemApplication.class, args);
 
 		log.info("Someething changes");
-		
+
 	}
 
 }
