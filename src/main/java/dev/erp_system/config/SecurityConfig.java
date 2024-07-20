@@ -15,6 +15,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import dev.erp_system.config.services.UserDetailsServiceImpl;
+import jakarta.servlet.DispatcherType;
 import dev.erp_system.config.jwt.AuthEntryPointJwt;
 import dev.erp_system.config.jwt.AuthTokenFilter;
 
@@ -61,8 +62,19 @@ public class SecurityConfig {
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth.requestMatchers("/api/auth/**").permitAll()
-                        .requestMatchers("/api/test/**").permitAll()
+                        .requestMatchers("/api/test/").permitAll()
+                        .dispatcherTypeMatchers(DispatcherType.ASYNC, DispatcherType.FORWARD,
+                                DispatcherType.ERROR)
+                        .permitAll()
                         .anyRequest().authenticated());
+        // .authorizeHttpRequests()
+        // .dispatcherTypeMatchers(DispatcherType.ASYNC, DispatcherType.FORWARD,
+        // DispatcherType.ERROR)
+        // .permitAll()
+        // .anyRequest().authenticated();
+        // .authorizeHttpRequests(auth -> auth.requestMatchers("/api/auth/").permitAll()
+        // .requestMatchers("/api/test/").permitAll()
+        // .anyRequest().authenticated());
 
         http.authenticationProvider(authenticationProvider());
 
