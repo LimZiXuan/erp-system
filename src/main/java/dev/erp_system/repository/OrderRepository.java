@@ -1,6 +1,6 @@
 package dev.erp_system.repository;
 
-import dev.erp_system.model.Product;
+import dev.erp_system.model.Orders;
 
 import java.util.Optional;
 
@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProductRepository extends JpaRepository<Product, Integer> {
+public interface OrderRepository extends JpaRepository<Orders, Integer> {
 }

@@ -14,6 +14,7 @@ public class Product {
     private String name;
     private double price;
     private int status;
+    private int stock;
 
     // Getters and setters
 
@@ -53,5 +54,13 @@ public class Product {
     public void setStatus(int status) {
 
         this.status = status;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 }
